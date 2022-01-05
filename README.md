@@ -15,5 +15,5 @@ alphasign is a Python library for
 ## Install
 
 ```
-sudo pip3 install git+https://github.com/robweber/omni-epd.git#egg=omni-epd
+sudo pip3 install git+https://github.com/robweber/alphasign.git#egg=alphasign
 ```
