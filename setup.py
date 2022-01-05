@@ -1,10 +1,10 @@
 import setuptools
 setuptools.setup(
   name = 'alphasign',
-  version = '1.0',
+  version = '1.1',
   packages = setuptools.find_packages(),
 
-  install_requires = ['pyserial>=2.4', 'pyusb>=1.0.0a2', 'pyyaml>=3.05'],
+  install_requires = ['pyserial>=3.5', 'pyusb>=1.2.1', 'pyyaml>=5.1'],
 
   author = 'Matt Sparks',
   author_email = 'ms@quadpoint.org',
