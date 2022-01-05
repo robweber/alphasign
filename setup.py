@@ -12,6 +12,6 @@ setuptools.setup(
   long_description = ('Implementation of the Alpha Sign Communications '
                       'Protocol, which is used by many commercial LED signs, '
                       'including the Betabrite.'),
-  url = 'https://github.com/msparks/alphasign',
+  url = 'https://github.com/robweber/alphasign',
   license = 'BSD',
 )
