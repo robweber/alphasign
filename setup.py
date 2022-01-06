@@ -1,7 +1,7 @@
 import setuptools
 setuptools.setup(
   name = 'alphasign',
-  version = '1.1',
+  version = '1.2',
   packages = setuptools.find_packages(),
 
   install_requires = ['pyserial>=3.5', 'pyusb>=1.2.1', 'pyyaml>=5.1'],

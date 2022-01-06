@@ -12,6 +12,12 @@ class BaseInterface(object):
   This class contains utility methods for fundamental sign features.
   """
 
+  def __init__(self, debug=False):
+      """
+      :param debug: if debug messages should print (default: False)
+      """
+      self._debug = debug
+
   def write(self, data):
     raise NotImplementedError
 

@@ -11,13 +11,14 @@ class Serial(base.BaseInterface):
 
   This class uses `pySerial <http://pyserial.sourceforge.net/>`_.
   """
-  def __init__(self, device="/dev/ttyS0"):
+  def __init__(self, device="/dev/ttyS0", debug=False):
     """
     :param device: character device (default: /dev/ttyS0)
+    :param debug: if debug messages should print (default: False)
     :type device: string
     """
+    super().__init__(debug)
     self.device = device
-    self.debug = False
     self._conn = None
 
   def connect(self):
@@ -48,7 +49,7 @@ class Serial(base.BaseInterface):
     """
     if not self._conn or not self._conn.isOpen():
       self.connect()
-    if self.debug:
+    if self._debug:
       logging.debug("Writing packet: %s" % repr(packet))
     try:
       self._conn.write(str(packet).encode())
@@ -63,12 +64,13 @@ class USB(base.BaseInterface):
 
   This class uses `PyUSB <http://pyusb.berlios.de>`_.
   """
-  def __init__(self, usb_id):
+  def __init__(self, usb_id, debug=False):
     """
     :param usb_id: tuple of (vendor id, product id) identifying the USB device
+    :param debug: if debug messages should print (default: False)
     """
+    super().__init__(debug)
     self.vendor_id, self.product_id = usb_id
-    self.debug = False
     self._handle = None
     self._conn = None
 
@@ -110,10 +112,10 @@ class USB(base.BaseInterface):
     """ """
     if not self._conn:
       self.connect()
-    if self.debug:
+    if self._debug:
       logging.debug("Writing packet: %s" % repr(packet))
     written = self._conn.bulkWrite(self._write_endpoint.address, str(packet))
-    if self.debug:
+    if self._debug:
       logging.debug("%d bytes written" % written)
     self._conn.bulkWrite(self._write_endpoint.address, '')
 
@@ -123,8 +125,8 @@ class DebugInterface(base.BaseInterface):
 
   This does nothing except print the contents of written packets.
   """
-  def __init__(self):
-    self.debug = False
+  def __init__(self, debug=False):
+    super().__init__(debug)
 
   def connect(self):
     """ """
@@ -136,6 +138,6 @@ class DebugInterface(base.BaseInterface):
 
   def write(self, packet):
     """ """
-    if self.debug:
+    if self._debug:
       logging.debug("Writing packet: %s" % repr(packet))
     return True
