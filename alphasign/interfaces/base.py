@@ -13,7 +13,7 @@ class BaseInterface(object):
   """
 
   def write(self, data):
-    return False
+    raise NotImplementedError
 
   def clear_memory(self):
     """Clear the sign's memory.
